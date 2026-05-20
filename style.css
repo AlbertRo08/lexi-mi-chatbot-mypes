@@ -1,0 +1,30 @@
+ body,html{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(imagen\ bonito.jpg) center center;
+    background-size: cover;
+ }
+ .contenedor{
+    text-align: center;
+    padding: 20px;
+    background-color: bisque;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ }
+
+ .boton-redireccion{
+    background-color: rgb(99, 70, 35);
+    color: white;
+    padding: 10px 20px;
+    display: inline-block;
+    margin-top: 20xp;
+    border-radius: 5px;
+    text-decoration: none;
+ }
+ .boton-redireccion:hover{
+    background-color: brown;
+ }
