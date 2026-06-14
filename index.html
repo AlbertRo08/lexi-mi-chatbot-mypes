@@ -1,19 +1,125 @@
 <!DOCTYPE html>
-<html lang="es-ES">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Innovación Elite en Sistemas - Terminal Operacional</title>
     <link rel="stylesheet" href="style.css">
-    <script src="//code.tidio.co/hsxho2ngkphgdwdxyuem9fg6wfvt7qut.js" async></script>
 </head>
 <body>
 
-    <div class="contenedor">
-        <hl>Bienvenido a tu asistente virtual dirigido especialmente para los MYPEs</hl>
-        <p>Te ayudaremos a desarrollar y organizar especialmente tus productos del mercado.</p>
-        <a herf="#" class="boton-redireccion">Haz click aquí</a>
+    <div id="welcome-screen">
+        <div class="welcome-card glass">
+            <div class="bot-avatar">🤖</div>
+            <h2>Innovación Elite en Sistemas</h2>
+            <p style="color: #aaa; font-size: 0.9rem; margin-bottom: 25px;">
+                Cargando el entorno de desarrollo y base de datos local de Lexi AI...
+            </p>
+            <button id="startBtn" class="btn-block">Iniciar Terminal</button>
+        </div>
     </div>
-    
+
+    <nav class="glass-nav">
+        <div class="logo">🧬 Tienda Lexi - Mercado Digital</div>
+        <div class="nav-buttons">
+            <button onclick="go('store')">🏪 Catálogo</button>
+            <button onclick="go('about')">📊 Sistema</button>
+        </div>
+    </nav>
+
+    <main class="main-container">
+
+        <section id="store" class="page active">
+            <h2 style="margin-top: 0; color: #fff;">🏪 Catálogo del Servidor Local</h2>
+            <p style="color: #aaa; font-size: 0.9rem;">Selecciona los componentes o artículos que deseas añadir al lote de transacciones.</p>
+            <div id="products-grid" class="grid">
+                </div>
+        </section>
+
+        <section id="about" class="page">
+            <h2 style="margin-top: 0; color: #fff;">📊 Documentación del Proyecto</h2>
+            <div class="glass" style="padding: 20px; line-height: 1.6; color: #e0e0e0;">
+                <h3>Innovación Elite en Sistemas (IES)</h3>
+                <p>Este entorno representa el prototipo de terminal interactivo unificado, integrando pasarelas de ordenamiento optimizadas a nivel de ancho de banda y un chatbot analítico basado en matrices semánticas locales (Lexi AI).</p>
+                <p><strong>Desarrolladores al proyecto asignados al módulo:</strong> Cornelio Velasquez Elvin Ioshua, Galindo Paz Carlos Enrique, Malqui Barrueto Misael Alexander, Perez Marques Moises Mario, Rosales Paredes Albert Manuel, Vilquiniche Vasquez Sebastian Niberson. </p>
+            </div>
+        </section>
+
+        <aside class="sidebar-right">
+
+            <div class="cart glass">
+                <h3>🛒 Carrito</h3>
+                <ul id="list">
+                    </ul>
+                <div id="total">Total: $0</div>
+                <button class="btn-block" onclick="checkout()">Pagar ahora</button>
+            </div>
+
+            <div id="checkout-block" class="checkout-box hidden">
+                
+                <div id="checkout-form-fields">
+                    <h4>📋 Datos de Envío</h4>
+                    <div class="input-group">
+                        <label for="client-name">Nombre del Residente:</label>
+                        <input type="text" id="client-name" placeholder="Ej. Juan Pérez">
+                    </div>
+                    <div class="input-group">
+                        <label for="client-address">Dirección del Condominio:</label>
+                        <input type="text" id="client-address" placeholder="Ej. Condominio El Sol, Mz. B Lt. 4">
+                    </div>
+
+                    <h4>💳 Métodos de Pago</h4>
+                    <div class="checkout-payment-options">
+                        <button class="btn-checkout-yape" onclick="showYapeQR()">Yape</button>
+                        <button class="btn-checkout-cash" onclick="payWithDetails('Efectivo')">Efectivo</button>
+                    </div>
+                </div>
+
+                <div id="yape-qr-container" class="hidden" style="text-align: center; margin-top: 5px;">
+                    <h4 style="color: #00e5ff; margin-bottom: 8px;">📱 Escanea y Yapea</h4>
+                    <p style="font-size: 0.75rem; color: #aaa; margin: 0 0 10px 0;">Escanea el código QR desde tu app de Yape:</p>
+                    
+                    <img id="yape-qr-img" src="qr_yape.jpg" alt="Código QR Yape" style="width: 140px; height: 140px; border-radius: 10px; border: 2px solid #9c27b0; background: white; padding: 5px; box-sizing: border-box; margin-bottom: 10px;">
+                    
+                    <div class="input-group" style="text-align: left;">
+                        <label for="yape-code">Número de Operación (Yape):</label>
+                        <input type="text" id="yape-code" placeholder="Ej. 183920" style="text-align: center;">
+                    </div>
+                    
+                    <div class="checkout-payment-options" style="margin-top: 12px;">
+                        <button class="btn-checkout-yape" onclick="confirmYapePayment()" style="width: 100%; flex: none;">Confirmar Transacción</button>
+                    </div>
+                    <button onclick="backToMethods()" style="background: none; border: none; color: #ff4444; font-size: 0.75rem; cursor: pointer; margin-top: 10px; text-decoration: underline;">Volver a métodos</button>
+                </div>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+    <div id="chat-widget-button" onclick="toggleChatWidget()">
+        💬 Hablar con Lexi
+    </div>
+
+    <div id="chat-widget-container" class="chat-widget-hidden">
+        <div id="chat-widget-header">
+            <div class="chat-bot-info">
+                <div class="status-dot"></div>
+                <strong>Lexi AI Support</strong>
+            </div>
+            <button id="chat-close-btn" onclick="toggleChatWidget()">&times;</button>
+        </div>
+        
+        <div id="chat" class="chat">
+            </div>
+
+        <div class="chat-widget-footer">
+            <input type="text" id="userInput" placeholder="Escribe un comando o pide un producto..." autocomplete="off">
+            <button id="sendBtn" class="btn-block" style="width: auto; padding: 0 20px; margin: 0;">Enviar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
